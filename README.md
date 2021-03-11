@@ -184,7 +184,7 @@ The LSMT training is done in `Residual LSMT.ipynb`
 ## Evaluating our trained model
 Evaluating our trained model. 
 Now we can evaluate how our model does compared to the other models we’ve discussed above. Here are the results from our model, and how they compare to the other ones. 
-![picture 10](images/057aa4a7c52e9d9aa352ed38cb2273c56b05b7d886ddb97956e7b7ec1b02b11d.png)  
+![picture 10](images/057aa4a7c52e9d9aa352ed38cb2273c56b05b7d886ddb97956e7b7ec1b02b11d.png) ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  
 *Development*
 
 ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  
