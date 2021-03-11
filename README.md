@@ -1,4 +1,4 @@
-# Correlation Using ARIMA-LSTM
+# Stock Price Correlation Using ARIMA-LSTM
 Mateo Osorio\
 Damon D'Amico
 
@@ -7,17 +7,17 @@ Department of Computer Science
 
 ## Abstract
 
-Investors have figured out a long time ago that getting computers to predict stock prices is promising and often a better way to hedge bets than getting a human to do the same. One of the important ways in which computers can do this prediction is by computing the correlation that stocks have to each other. This article is an exploration of one of the ways to find this correlation, using a combination of methods, ARIMA and LSTM. 
+Investors have figured that getting computers to predict stock prices is promising and often a better way to hedge financial bets than getting a human to make equivalent prediction. One of the important ways in which computers can do this prediction is by computing the correlation that stocks have to each other. This project is an exploration into one of the ways to find this correlation, one which uses a combination of two methods, AutoRegressive Integrated Moving Average (ARIMA) and a Long-Short Term Memory (LSTM) Recurrent Neural Network. The combination of methods provides significant improvements into performance. 
 
-This work is all based on a single paper, written by Hyeong Kyu Choi from Korea University in Seoul in 2018. All of the technical work you will read here is based directly off of Choi’s work and should be credited to them as such. This article is simply an exploration into the methods Choi used, with the hope of creating a digestible source of information, and a narrated walkthrough of the usage and replication of Choi’s code and methods. 
+This work is all based on a single paper, written by Hyeong Kyu Choi from Korea University in Seoul in 2018. All of the technical work you will read here, as well as the code provided, is based directly off of Choi’s work and should be credited to them as such. This article is simply an exploration into the methods Choi used, with the hope of creating a digestible source of information, and a narrated walkthrough of the usage and replication of Choi’s code and methods. 
 The authors would like to thank Choi for their contributions and for their meticulously well-documented and thorough work. 
 
 ## Summary of work completed
-The authors of this repository fully trained a model that predicts correlation coefficient, using data provided by our instructors. Because the data we used is not allowed to be accessed publicly, we have been asked to omit it from the repository. 
+The authors of this repository fully trained a model that predicts correlation coefficients for 86 stocks during a 3 year peroid, using data provided by our instructor, Professor Han Liu. Because the data we used is not allowed to be accessed publicly, we have been asked to omit it from the repository. 
 
 After training the model with the provided data, we used the trained model to predict the correlation of two stocks, Apple and Google. 
 
-- [Correlation Using ARIMA-LSTM](#correlation-using-arima-lstm)
+- [Stock Price Correlation Using ARIMA-LSTM](#stock-price-correlation-using-arima-lstm)
   - [Abstract](#abstract)
   - [Summary of work completed](#summary-of-work-completed)
   - [What does Correlation Mean?](#what-does-correlation-mean)
@@ -52,77 +52,24 @@ All of the models we’ll be going through in the following sections are attempt
 ### Full historical model
 This is the simplest model, in which the correlation coefficient for a time period between two stocks is simply equal to the coefficient at a previous time period. Very simple and naive, and not quite useful in this application, but still relevant. 
 
-$$
-\begin{aligned}
-\hat\rho_{ij}^{(t)} = \hat\rho_{ij}^{(t-1)}\\
-\end{aligned}\\
-
-\begin{aligned}
-\text{i,j: asset index in the correlation coefficient matrix}
-\end{aligned}
-$$
+![picture 13](images/2d80c3e968764e11a08260f116929a7fcf99c7dfd2a3f57334f233232f488089.png)  
 
 ### Constant Correlation Model 
 Another naive approach with some uses in other applications. Here we assume that all coefficients in the model must be equal, and they are all equal to the mean correlation coefficient. 
 
-$$
-\begin{aligned}
-\hat\rho_{ij}^{(t)} = \frac{\sum\limits_{i>j}^{} \rho_{ij}^{(t-1)}}{n(n-1)/2}
-\end{aligned}\\
+![picture 14](images/45688a990ec88ed7993d63439c19a4a9bab480d64e9a840f6aa2c39b026c48a3.png)  
 
-\begin{aligned}
-\text{i,j: asset index in the correlation coefficient matrix}
-\end{aligned}\\
-\begin{aligned}
-\text{n: number of assets in the portfolio}
-\end{aligned}
-$$
 
 ### Single-Index model
 This model assumes that the return of each stock is correlated to the return of the entire market. We can establish the return of an asset using some variables and the return of the whole market at a certain time period. After, we can determine the correlation coefficient between two assets based on that information. 
 
-$$
-R_{i,t} = \alpha_i + \beta_i R_{m,t} + \epsilon_{i,t}
-$$
-
-$R_{i,t}$ : return of asset $i$ at time $t$\
-$R_{m,t}$ : return of the market at time $t$\
-$\alpha_i$ : risk adjusted excess return of asset $i$\
-$\beta_i$ : sensitivity of asset $i$ to the market\
-$\epsilon_{i,t}$ : residual return, error term such that $E(\epsilon_i) = 0$ ; $Var(\epsilon_i) = \sigma^2_{\epsilon_i}$
-
-$$
-Cov(R_i, R_j) = \rho_{ij} \sigma_i \sigma_j = \beta_i \beta_j \sigma_m^2
-$$
-$\sigma_i / \sigma_j$ : standatd deviation of asset $i/j$'s return
-
-$\sigma_m$ : standard deviation of market return
-
-The estimated correlation coefficient $\hat\rho_{ij}$ would be
-$$
-\hat\rho_{ij}^{(t)} = \frac{\beta_i \beta_j \sigma_m^2}{\sigma_i \sigma_j}
-$$
+![picture 16](images/92f57d37c8ddb6b30072033c1c1f1aa837f7474d8104d2bf856e996f617a1330.png)  
 
 ### Multi-group model
 This model, as the name would suggests, groups assets into different buckets. In the case of stocks, it groups them by sector. This is under the assumption that stocks in the same sector will perform similarly. It’s the same as the single index, but with the additional grouping. 
 
-If $\alpha=\beta$:
+![picture 17](images/44adfc27022b327ef785cb2d74dd922793249660ed326ff5247e266009c0fe0f.png)  
 
-$$
-\hat\rho_{ij}^{(t)} = \frac
-{\sum\limits_{i\in\alpha}^{n_\alpha} \sum\limits_{j\in\beta,i\neq  j}^{n_\alpha} \rho_{ij}^{(t-1)}}
-{n_\alpha (n_\beta-1)}
-$$
-else:
-$$
-\hat\rho_{ij}^{(t)} = \frac
-{\sum\limits_{i\in\alpha}^{n_\alpha} \sum\limits_{j\in\beta,i\neq  j}^{n_\alpha} \rho_{ij}^{(t-1)}}
-{n_\alpha n_\beta}
-$$
-
-$\alpha / \beta$ : industry sector notation
-
-$n_\alpha / n_\beta$ : the number of assets in each industry sector
 
 ## What is ARIMA-LSTM? Why are we using it?
 ARIMA-LSTM is a combination of two machine learning models for time-series data that complement each other well. 
