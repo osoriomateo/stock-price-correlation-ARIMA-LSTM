@@ -184,14 +184,9 @@ The LSMT training is done in `Residual LSMT.ipynb`
 ## Evaluating our trained model
 Evaluating our trained model. 
 Now we can evaluate how our model does compared to the other models we’ve discussed above. Here are the results from our model, and how they compare to the other ones. 
-![picture 10](images/057aa4a7c52e9d9aa352ed38cb2273c56b05b7d886ddb97956e7b7ec1b02b11d.png) ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  
-*Development*
-
-![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png)  
-*Testing 1*
-
-![picture 12](images/f500bd471218dd6a62a2d9d2b82f90df98ad1af7fb67dd31ca0f085758f2ca9b.png)  
-*Testing 2*
+Development           |  Test 1                   |     Test 2
+:-------------------------:|:-------------------------:|:---------------
+ ![picture 19](images/60044f8a8e508d027912a1b33301fffbc1bd4d6e0b7a00c3f66d642dc6ce4c12.png) | ![picture 11](images/b82113a20abefd73c4008c8a2132c26b439fcf7b196a637df5aff198f0f20981.png) | ![picture 12](images/f500bd471218dd6a62a2d9d2b82f90df98ad1af7fb67dd31ca0f085758f2ca9b.png)  
 
 ```
 opt. DEV MSE :  0.18322563026995467
