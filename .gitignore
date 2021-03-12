@@ -1,3 +1,4 @@
+.DS_Store
 /source/historical_price
 historical_price/AAL_2015-12-30_2021-02-21_minute.csv
 historical_price/AAPL_2015-12-30_2021-02-21_minute.csv
