@@ -34,6 +34,7 @@ After training the model with the provided data, we used the trained model to pr
   - [Evaluating our trained model](#evaluating-our-trained-model)
   - [Apples and Googles](#apples-and-googles)
   - [Implications in Quantitative Finance and Conclusions](#implications-in-quantitative-finance-and-conclusions)
+  - [Lessons Learned](#lessons-learned)
   
 ## What does Correlation Mean?
 It is often in finance that the same forces affect similar stocks. If, for example, a new oil well is discovered in Alaska, the stock price of oil companies that operate in the area might go up in anticipation of new businesses, along with an increase in stock prices for car companies, since cheap gas tends to lead to more car sales. 
@@ -243,3 +244,12 @@ It is well known in the AI world that often times combined models perform much b
 
 Zooming out a bit, we can see in this particular model a pattern that is starting to emerge in the world of quantitative finance. There are very well established “textbook” models that do a decent job of doing most of the grunt work in these types of applications. Then there are these cutting edge models that really push the boundaries of what is possible, and are increasingly complex. 
 The most successful companies and firms in the quantitative trading world are those that combine these two paradigms. They understand the underlying and overarching statistical models, but are consistently reaching new limits in research and technology. 
+
+## Lessons Learned
+This project was a brilliant learning experience in many different aspects. We took a deep dive into both of the statistical models mentioned. We learned lots about how ARIMA works, and how to create Neural Networks for use in financial application. Here are some other lessons:
+- The value of documentation.\
+  Choi was very meticulous in his work and organization, which made our lives so much easier. Using well-documented resources is the best way to incentivize us to improve our documentation later on. 
+- Not using numbers! 
+  The biggest issue with reverse-engineering Choi's code was figuring out what all the different numbers ment. Where they a size? An array shape? A step size? When the code isn't commented it's hard to figure this out from scratch. A better option is to declare imporant values, and use the variable declaration instead of the raw numbers. 
+- Python versions
+  This project was a nightmare because different libraries used in Choi's code need old versions of python to work. We ended up using using 3 different versions of Python. Despite the frustrations with things not working or updating, we still learned a lot in Kernel management, how Python actually works in the back end, and some pretty deep features of Jupyter Notebook. 
