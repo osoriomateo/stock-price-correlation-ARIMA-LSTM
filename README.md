@@ -5,7 +5,7 @@ Damon D'Amico
 Northwestern University\
 Department of Computer Science
 
-[Original Work by Hyeong Kyu Choi](https://github.com/imhgchoi/ARIMA-LSTM-hybrid-corrcoef-predict)
+[Original Work by Hyeong Kyu Choi](https://github.com/imhgchoi/ARIMA-LSTM-hybrid-corrcoef-predict)\
 [Presentation Link](https://www.youtube.com/watch?v=e2cF8a5aAhE)
 
 ## Abstract
