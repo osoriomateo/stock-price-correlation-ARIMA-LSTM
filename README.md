@@ -5,6 +5,9 @@ Damon D'Amico
 Northwestern University\
 Department of Computer Science
 
+[Original Work by Hyeong Kyu Choi](https://github.com/imhgchoi/ARIMA-LSTM-hybrid-corrcoef-predict)
+[Presentation Link](https://www.youtube.com/watch?v=e2cF8a5aAhE)
+
 ## Abstract
 
 Investors have figured that getting computers to predict stock prices is promising and often a better way to hedge financial bets than getting a human to make equivalent prediction. One of the important ways in which computers can do this prediction is by computing the correlation that stocks have to each other. This project is an exploration into one of the ways to find this correlation, one which uses a combination of two methods, AutoRegressive Integrated Moving Average (ARIMA) and a Long-Short Term Memory (LSTM) Recurrent Neural Network. The combination of methods provides significant improvements into performance. 
